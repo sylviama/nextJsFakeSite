@@ -20,9 +20,15 @@ img {
   height: auto;
 }
 
-h1,
+h1{
+  color: white;
+
+}
 h2,
-p,
+p{
+  color:blackish;
+
+}
 ul {
   margin: 0;
 }

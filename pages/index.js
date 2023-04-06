@@ -1,22 +1,24 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+//import Image from 'next/image';
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>NextJS Fake Site Homework</title>
       </Head>
 
       <main>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          The world's greatest fake site
         </h1>
-
-        <p className={styles.description}>
-          Get started by editing <code>pages/index.js</code>
-        </p>
+        <div style={{width:500}}>
+          <p className={styles.description}>
+            Create the world's greatest fake site and enjoy the breeze of fresh air when you complete it
+          </p>
+        </div>
+        <button className={styles.button}>Do something awesome</button>
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
@@ -48,17 +50,6 @@ export default function Home() {
           </a>
         </div>
       </main>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
-        </a>
-      </footer>
 
       <style jsx>{`
         main {
