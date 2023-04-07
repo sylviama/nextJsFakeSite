@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import Image from 'next/image';
 import React from 'react'
-import { useState, useEffect } from 'react'
 import { gql } from 'graphql-request';
 import { request } from 'graphql-request';
 
