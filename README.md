@@ -1,7 +1,7 @@
-SETUP:
+## SETUP:
 npm install apollo-client apollo-server-icro axios graphql graphql-requst micro next
 
-RUN:
+## RUN:
 npm run dev
 
 
