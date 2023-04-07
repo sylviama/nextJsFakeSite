@@ -24,10 +24,15 @@ h1{
   color: white;
 
 }
-h2,
+h2{
+  color:#4C4C51;
+  font-size: 36px;
+  line-height: 36px;
+}
 p{
-  color:blackish;
-
+  color:#4C4C51;
+  font-size: 22px;
+  line-height: 28px;
 }
 ul {
   margin: 0;

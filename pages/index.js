@@ -1,8 +1,13 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-//import Image from 'next/image';
+import Image from 'next/image';
+import React from 'react'
+import { useState, useEffect } from 'react'
+import { gql } from 'graphql-request';
+import { request } from 'graphql-request';
+import Link from 'next/link'
 
-export default function Home() {
+function Home({ post, imageSize}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -20,34 +25,44 @@ export default function Home() {
         </div>
         <button className={styles.button}>Do something awesome</button>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '50px'  }}>
+          <div style={{margin:'50px'}}>
+            <h2>{post.title}</h2>
+            <p style={{color:'#4C4C51'}}>{post.description}</p>
+          </div>
+          <div style={{margin:'50px'}}>
+            <div className={styles.videocontainer}>
+              <a href={post.url}>
+                <img src="/assets/playbtn.png" className={styles.overlay} />
+                <img src="/assets/stockimage.png" className={styles.image} />
+                <div className={styles.gradient}/>
+              </a>
+            </div>
+          </div>
+        </div>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+        <h2>Ready to have your cake and eat it too?</h2>
+        <div style={{width:500, color:'#4C4C51'}}>
+          <p>Start by designing the experience you have in mind. We'll guide you through each step. 
+          If your experience meet the quality standards, you will hear more about what's next</p>
+        </div>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+        <div style={{ width:'1000px',display: 'flex', justifyContent: 'left', padding: '50px'}}>
+          <div style={{ margin:'50px' }}>
+            <li style={{listStyle:'none', color:'red', marginBottom:'5px', fontweight: 'bold'}}>Fakesite</li>
+            <li style={{listStyle:'none', color:'grey'}}>About us</li>
+            <li style={{listStyle:'none', color:'grey'}}>Press</li>
+            <li style={{listStyle:'none', color:'grey'}}>Policies</li>
+            <li style={{listStyle:'none', color:'grey'}}>Help</li>
+          </div>
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          <div style={{ margin:'50px' }}>
+            <li style={{listStyle:'none', color:'red', marginBottom:'5px', fontweight: 'bold'}}>Account</li>
+            <li style={{listStyle:'none', color:'grey'}}>Edit Profile</li>
+            <li style={{listStyle:'none', color:'grey'}}>Friends</li>
+            <li style={{listStyle:'none', color:'grey'}}>Social</li>
+            <li style={{listStyle:'none', color:'grey'}}>Delete Profile</li>
+          </div>
         </div>
       </main>
 
@@ -59,24 +74,6 @@ export default function Home() {
           flex-direction: column;
           justify-content: center;
           align-items: center;
-        }
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        footer img {
-          margin-left: 0.5rem;
-        }
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          text-decoration: none;
-          color: inherit;
         }
         code {
           background: #fafafa;
@@ -103,4 +100,43 @@ export default function Home() {
       `}</style>
     </div>
   )
+}
+export default Home;
+
+
+
+
+  export const GET_POSTS = gql`
+      query {
+        getVideo(id:804672860) {
+          id
+          title
+          description
+          thumbnail_small
+          url
+        }
+      }
+    `
+
+const GRAPHQL_ENDPOINT = 'http://localhost:3000/api/graphql';
+
+export async function getStaticProps() {
+    const data = await request(GRAPHQL_ENDPOINT, GET_POSTS);
+    return {
+        props: {
+            post: data.getVideo,
+        },
+    };
+}
+
+function FindImageSize() {
+  const [imageSize, setImageSize] = useState({ width: 0, height: 0 })
+
+  useEffect(() => {
+    const image = new Image()
+    image.onload = () => {
+      setImageSize({ width: image.width, height: image.height })
+    }
+    image.src = '/assets/stockimage.jpg'
+  }, [])
 }
