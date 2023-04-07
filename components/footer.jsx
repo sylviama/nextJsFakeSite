@@ -14,19 +14,19 @@ const Footer = () => {
         </div>
         <div style={{ display: 'flex', justifyContent: 'right', listStyle: 'none' }}>
             <li style={{ margin: '0 10px' }}>
-            <Link href="/" passHref style={{textDecoration:'none', color:'grey'}}>
-                Term
-            </Link>
+                <Link href="/" passHref style={{textDecoration:'none', color:'grey'}}>
+                    Term
+                </Link>
             </li>
             <li style={{ margin: '0 10px' }}>
-            <Link href="/about" passHref  style={{textDecoration:'none', color:'grey'}}>
-                Privacy
-            </Link>
+                <Link href="/about" passHref  style={{textDecoration:'none', color:'grey'}}>
+                    Privacy
+                </Link>
             </li>
             <li style={{ margin: '0 10px' }}>
-            <Link href="/contact" passHref  style={{textDecoration:'none', color:'grey'}}>
-                Site Map
-            </Link>
+                <Link href="/contact" passHref  style={{textDecoration:'none', color:'grey'}}>
+                    Site Map
+                </Link>
             </li>
         </div>
     </nav>
