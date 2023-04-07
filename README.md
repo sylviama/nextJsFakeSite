@@ -1,1 +1,7 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+SETUP:
+npm install apollo-client apollo-server-icro axios graphql graphql-requst micro next
+
+RUN:
+npm run dev
+
+
