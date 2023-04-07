@@ -5,9 +5,8 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { gql } from 'graphql-request';
 import { request } from 'graphql-request';
-import Link from 'next/link'
 
-function Home({ post, imageSize}) {
+function Home({ post}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -106,17 +105,17 @@ export default Home;
 
 
 
-  export const GET_POSTS = gql`
-      query {
-        getVideo(id:804672860) {
-          id
-          title
-          description
-          thumbnail_small
-          url
-        }
+export const GET_POSTS = gql`
+    query {
+      getVideo(id:804672860) {
+        id
+        title
+        description
+        thumbnail_small
+        url
       }
-    `
+    }
+  `
 
 const GRAPHQL_ENDPOINT = 'http://localhost:3000/api/graphql';
 
@@ -129,14 +128,3 @@ export async function getStaticProps() {
     };
 }
 
-function FindImageSize() {
-  const [imageSize, setImageSize] = useState({ width: 0, height: 0 })
-
-  useEffect(() => {
-    const image = new Image()
-    image.onload = () => {
-      setImageSize({ width: image.width, height: image.height })
-    }
-    image.src = '/assets/stockimage.jpg'
-  }, [])
-}
