@@ -6,9 +6,9 @@ const Footer = () => {
     <nav style={{ display: 'flex', justifyContent: 'space-between', padding: '50px' }}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
             <Image
-                src="/assets/logo.png" // Route of the image file
-                height={30} // Desired size with correct aspect ratio
-                width={30} // Desired size with correct aspect ratio
+                src="/assets/logo.png" 
+                height={30} 
+                width={30} 
                 alt="Your Name"
             />
         </div>
