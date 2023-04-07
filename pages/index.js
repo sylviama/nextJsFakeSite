@@ -1,8 +1,12 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-//import Image from 'next/image';
+import Image from 'next/image';
+import React from 'react'
+import { useState, useEffect } from 'react'
+import { gql } from 'graphql-request';
+import { request } from 'graphql-request';
 
-export default function Home() {
+function Home({ post, imageSize}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -20,34 +24,18 @@ export default function Home() {
         </div>
         <button className={styles.button}>Do something awesome</button>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <div className={styles.container} style={{ display: 'flex', justifyContent: 'space-between', padding: '50px'  }}>
+          <div>
+            <h2>{post.title}</h2>
+            <p>{post.description}</p>
+          </div>
+          <div>
+            <div className={styles.container} style={imageSize}>
+              <img src="/assets/stockimage.png" className={styles.image} />
+              <div className={styles.gradient}  style={imageSize}/>
+              <img src="/assets/playbtn.png" className={styles.overlay} />
+            </div>
+          </div>
         </div>
       </main>
 
@@ -103,4 +91,43 @@ export default function Home() {
       `}</style>
     </div>
   )
+}
+export default Home;
+
+
+
+
+  export const GET_POSTS = gql`
+      query {
+        getVideo(id:811936442) {
+          id
+          title
+          description
+          thumbnail_small
+          url
+        }
+      }
+    `
+
+const GRAPHQL_ENDPOINT = 'http://localhost:3000/api/graphql';
+
+export async function getStaticProps() {
+    const data = await request(GRAPHQL_ENDPOINT, GET_POSTS);
+    return {
+        props: {
+            post: data.getVideo,
+        },
+    };
+}
+
+function FindImageSize() {
+  const [imageSize, setImageSize] = useState({ width: 0, height: 0 })
+
+  useEffect(() => {
+    const image = new Image()
+    image.onload = () => {
+      setImageSize({ width: image.width, height: image.height })
+    }
+    image.src = '/assets/stockimage.jpg'
+  }, [])
 }

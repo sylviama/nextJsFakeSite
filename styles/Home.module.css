@@ -7,9 +7,9 @@
   align-items: center;
 }
 
-.title a:hover,
-.title a:focus,
-.title a:active {
+.title Link:hover,
+.title Link:focus,
+.title Link:active {
   text-decoration: underline;
 }
 
@@ -61,7 +61,7 @@
 .card:hover,
 .card:focus,
 .card:active {
-  color: #0070f3;
+  color: #88939E;
   border-color: #0070f3;
 }
 
@@ -88,7 +88,7 @@
 }
 
 .button {
-  background-color: #EF2E1D;
+  background-color: #EE2D1C;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -107,4 +107,35 @@
 
 .button:active {
   background-color: #4CAF50;
+}
+
+.container {
+  position: relative;
+}
+
+.image {
+  position: relative;
+  z-index: 1;
+}
+
+.gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255, 0, 0, 0.7), #FFB1B5);
+  z-index: 2;
+  background-size: cover;
+}
+
+.overlay {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+
+.space {
+  flex: 5;
 }
