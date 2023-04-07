@@ -14,8 +14,8 @@ const Navbar = () => {
         </div>
         <div style={{ display: 'flex', justifyContent: 'right', listStyle: 'none', alignItems: 'center' }}>
             <li style={{ margin: '0 10px'}}>
-                <Link href="/" passHref  style={{ color: 'white', textDecoration: 'none' }}>
-                    Account
+                <Link href="/login" passHref  style={{ color: 'white', textDecoration: 'none' }}>
+                    Login
                 </Link>
             </li>
             <li style={{ margin: '0 10px' }}>
