@@ -6,8 +6,7 @@ npm run dev
 
 ### Sample pages
 #### Home/Index page:
-<img width="800" alt="Screen Shot 2023-04-07 at 5 09 16 PM" src="https://user-images.githubusercontent.com/16583776/230679537-e30242b7-2c09-4e28-8487-8316e89aefce.png">
-<img width="800" alt="Screen Shot 2023-04-07 at 3 40 44 PM" src="https://user-images.githubusercontent.com/16583776/230672154-eabab154-8c2e-4a65-afc6-55503047b2fc.png">
+<img width="800" alt="Screen Shot 2023-04-07 at 5 09 16 PM" src="https://user-images.githubusercontent.com/16583776/230722512-e4b6309b-d832-4e45-ba63-557a81f26ed2.png">
 <img width="800" alt="Screen Shot 2023-04-07 at 3 40 52 PM" src="https://user-images.githubusercontent.com/16583776/230672219-772a2d56-f64d-4186-b1a9-b2f9901d0247.png">
 
 #### Login/Sign up papge:
